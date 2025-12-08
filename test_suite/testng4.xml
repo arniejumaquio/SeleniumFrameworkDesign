@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite" parallel="tests">
+
+    <groups>
+        <run>
+            <include name="EndToEnd"/>
+            <include name="ErrorHandling"/>
+        </run>
+    </groups>
+
+    <listeners>
+        <listener class-name="rahulshettyacademy.testcomponents.Listener"/>
+    </listeners>
+
+    <test name="End to End Tests">
+        <classes>
+            <class name="rahulshettyacademy.tests.EndToEndTest">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Error Validation">
+        <classes>
+            <class name="rahulshettyacademy.tests.ErrorValidationTest"></class>
+        </classes>
+    </test>
+
+</suite>

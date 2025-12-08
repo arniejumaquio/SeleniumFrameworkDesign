@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression  Suite" parallel="methods" thread-count="2">
+
+    <listeners>
+        <listener class-name="rahulshettyacademy.testcomponents.Listener"></listener>
+    </listeners>
+
+    <test name="Error Validation">
+        <groups>
+            <run>
+                <include name="ErrorHandling"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="rahulshettyacademy.tests.ErrorValidationTest"></class>
+        </classes>
+    </test>
+
+
+</suite>

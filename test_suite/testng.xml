@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" thread-count="2" name="Regression  Suite">
+
+    <listeners>
+        <listener class-name="rahulshettyacademy.testcomponents.Listener"></listener>
+    </listeners>
+
+    <test name="Error Validation">
+        <classes>
+            <class name="rahulshettyacademy.tests.ErrorValidationTest"></class>
+        </classes>
+    </test>
+
+
+    <test name="End to End">
+        <classes>
+            <class name="rahulshettyacademy.tests.EndToEndTest"></class>
+        </classes>
+    </test>
+
+</suite>

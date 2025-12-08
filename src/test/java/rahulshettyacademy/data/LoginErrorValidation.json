@@ -1,0 +1,17 @@
+[
+  {
+    "email": "invalidemail8912@mailinator.com",
+    "password": "Test1234@!",
+    "testcasename": "invalid email"
+  },
+  {
+    "email": "unknownuuid8123712@mailinator.com",
+    "password": "Test12345@!",
+    "testcasename": "invalid password"
+  },
+  {
+    "email": "invalidemail8912@mailinator.com",
+    "password": "Test12345@!",
+    "testcasename": "invalid email and password"
+  }
+]
