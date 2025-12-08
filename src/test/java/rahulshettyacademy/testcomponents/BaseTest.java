@@ -73,7 +73,7 @@ public class BaseTest {
             driver = new EdgeDriver();
 
         } else {
-            System.out.println("Invalid browser name");
+            System.out.println("Invalid browser name.Please enter valid browser name");
         }
 
         driver.manage().window().maximize();
