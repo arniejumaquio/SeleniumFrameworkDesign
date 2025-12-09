@@ -112,6 +112,10 @@ public class StandAloneTest {
         Assert.assertTrue(isOrderIdPresent);
         Assert.assertTrue(isItemPresent);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e4e6ad4207727e459401c4af4b723a4873f0191
         driver.quit();
 
     }
