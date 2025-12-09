@@ -58,7 +58,7 @@ public class Listener extends BaseTest implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-
+        System.out.println("On Test Skipped");
     }
 
     @Override
