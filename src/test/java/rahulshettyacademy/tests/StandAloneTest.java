@@ -17,7 +17,7 @@ public class StandAloneTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.chromedriver().setup();
         WebDriver driver = new FirefoxDriver();
 
         driver.get("https://rahulshettyacademy.com/client/");

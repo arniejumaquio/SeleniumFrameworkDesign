@@ -10,7 +10,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
@@ -66,11 +65,6 @@ public class BaseTest {
         } else if (browserName.equalsIgnoreCase("safari")) {
 
             driver = new SafariDriver();
-
-        } else if (browserName.equalsIgnoreCase("edge")) {
-
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
 
         } else {
             System.out.println("Invalid browser name.Please enter valid browser name");
