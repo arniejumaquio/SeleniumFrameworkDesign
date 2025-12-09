@@ -70,10 +70,9 @@ public class StepDefinitionImpl extends BaseTest {
     @And("item name and order id is displayed")
     public void item_name_and_order_id_is_displayed() {
         orderId = thankYouPage.getOrderId();
-        //productCatalogue = landingPage.login(email, password);
         orderHistoryPage = productCatalogue.clickOrders();
         Assert.assertTrue(orderHistoryPage.isOrderIdDisplayed(orderId));
-        //Assert.assertTrue(orderHistoryPage.isItemNameDisplayed());
+
 
         driver.quit();
     }
