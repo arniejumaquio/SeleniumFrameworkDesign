@@ -12,7 +12,6 @@ public class ReportUtility {
         extentSparkReporter.config().setReportName("Regression Suite");
         extentSparkReporter.config().setDocumentTitle("Test Results");
 
-
         ExtentReports  extentReports = new ExtentReports();
         extentReports.attachReporter(extentSparkReporter);
         extentReports.setSystemInfo("QE","Arnie");
