@@ -10,8 +10,11 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -23,6 +26,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 
@@ -38,10 +42,17 @@ public class BaseTest {
         Properties properties = new Properties();
         properties.load(propertiesFileInStream);
         String browserName = System.getProperty("browser") != null ? System.getProperty("browser") : properties.getProperty("browser");
+        String downloadPath = System.getProperty("user.dir") + "/src/main/java/rahulshettyacademy/resources/downloads";
+
+
         if (browserName.contains("chrome")) {
 
-            WebDriverManager.chromedriver().setup();
+            Map<String, Object> prefs = new HashMap<String, Object>();
+            prefs.put("download.default_directory", downloadPath);
             ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.setExperimentalOption("prefs", prefs);
+
+            WebDriverManager.chromedriver().setup();
 
             if (browserName.contains("headless")) {
                 chromeOptions.addArguments("headless");
@@ -52,14 +63,35 @@ public class BaseTest {
 
         } else if (browserName.contains("firefox")) {
 
-            WebDriverManager.firefoxdriver().setup();
+            FirefoxProfile firefoxProfile = new FirefoxProfile();
+            firefoxProfile.setPreference("browser.download.dir", downloadPath);
             FirefoxOptions firefoxOptions = new FirefoxOptions();
+            firefoxOptions.setProfile(firefoxProfile);
+
+            WebDriverManager.firefoxdriver().setup();
+
 
             if (browserName.contains("headless")) {
-                firefoxOptions.addArguments("headless");
+                firefoxOptions.addArguments("--headless");
             }
 
             driver = new FirefoxDriver(firefoxOptions);
+            driver.manage().window().setSize(new Dimension(1440, 900));
+
+        } else if (browserName.contains("edge")) {
+
+            Map<String, Object> prefs = new HashMap<String, Object>();
+            prefs.put("download.default_directory", downloadPath);
+            EdgeOptions edgeOptions = new EdgeOptions();
+            edgeOptions.setExperimentalOption("prefs", prefs);
+
+            WebDriverManager.edgedriver().setup();
+
+            if (browserName.contains("headless")) {
+                edgeOptions.addArguments("headless");
+            }
+
+            driver = new EdgeDriver(edgeOptions);
             driver.manage().window().setSize(new Dimension(1440, 900));
 
         } else if (browserName.equalsIgnoreCase("safari")) {
@@ -108,6 +140,7 @@ public class BaseTest {
 
         initializeDriver();
         driver.get("https://rahulshettyacademy.com/client/");
+        //driver.get("https://demo.automationtesting.in/FileDownload.html");
         landingPage = new LandingPage(driver);
         return landingPage;
 
